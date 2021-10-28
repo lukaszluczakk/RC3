@@ -32,10 +32,6 @@ class StarshipApiAdapter: StarshipApiAdapterBase, StarshipApiAdapterProtocol {
 }
 
 extension StarshipApiAdapter {
-    private func mapStartshipsToStarshipDtos(starships: [Starship]) -> [StarshipDto] {
-        starships.map { StarshipDto(name: $0.name, model: $0.model, type: .sharship) }
-    }
-    
     private func subscribe() {
         subscription = starshipApi.$data
             .map(mapStartshipsToStarshipDtos)
@@ -43,5 +39,9 @@ extension StarshipApiAdapter {
                 self?.data = returnedData
                 self?.subscription?.cancel()
             }
+    }
+    
+    private func mapStartshipsToStarshipDtos(starships: [Starship]) -> [StarshipDto] {
+        starships.map { $0.mapToDto() }
     }
 }
