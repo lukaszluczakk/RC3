@@ -10,11 +10,10 @@ import Foundation
 class StarshipDto: DateItemProtocol {
     let name: String
     let model: String
-    let type: DataItemType
+    let type: DataItemType = .sharship
     
-    init(name: String, model: String, type: DataItemType) {
+    init(name: String, model: String) {
         self.name = name
         self.model = model
-        self.type = type
     }
 }

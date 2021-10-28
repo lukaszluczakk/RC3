@@ -14,6 +14,6 @@ struct Starship: Codable {
 
 extension Starship {
     func mapToDto() -> StarshipDto {
-        StarshipDto(name: self.name, model: self.model, type: .sharship)
+        StarshipDto(name: self.name, model: self.model)
     }
 }
