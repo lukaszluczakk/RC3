@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 public class StarshipApiAdapterBase {
-    @Published var data: [StarshipDto] = []
+    @Published public var data: [DateItemProtocol] = []
 }
 
 public protocol StarshipApiAdapterProtocol: StarshipApiAdapterBase {
