@@ -18,7 +18,7 @@ protocol StarshipApiProtocol: StarshipApiBase {
 
 class StarshipApi: StarshipApiBase, StarshipApiProtocol {
     private let networkManager: NetworkManagerProtocol
-    private var marketDatasubscription: AnyCancellable?
+    private var subscription: AnyCancellable?
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
@@ -29,12 +29,12 @@ class StarshipApi: StarshipApiBase, StarshipApiProtocol {
             return
         }
         
-        marketDatasubscription = networkManager.download(url: url)
+        subscription = networkManager.download(url: url)
             .decode(type: [Starship].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: networkManager.handleCompletion, receiveValue: { [weak self] (returnedData) in
                 self?.data = returnedData
-                self?.marketDatasubscription?.cancel()
+                self?.subscription?.cancel()
             })
     }
 }

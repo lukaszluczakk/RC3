@@ -26,6 +26,12 @@ class StarshipApiAdapter: StarshipApiAdapterBase, StarshipApiAdapterProtocol {
         subscribe()
     }
     
+    func getData() {
+        starshipApi.getData()
+    }
+}
+
+extension StarshipApiAdapter {
     private func mapStartshipsToStarshipDtos(starships: [Starship]) -> [StarshipDto] {
         starships.map { StarshipDto(name: $0.name, model: $0.model, type: .sharship) }
     }
@@ -37,9 +43,5 @@ class StarshipApiAdapter: StarshipApiAdapterBase, StarshipApiAdapterProtocol {
                 self?.data = returnedData
                 self?.subscription?.cancel()
             }
-    }
-    
-    func getData() {
-        starshipApi.getData()
     }
 }
