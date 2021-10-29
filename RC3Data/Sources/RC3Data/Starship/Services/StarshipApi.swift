@@ -29,6 +29,7 @@ class StarshipApi: StarshipApiBase, StarshipApiProtocol {
             return
         }
         
+        
         subscription = networkManager.download(url: url)
             .decode(type: [Starship].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)

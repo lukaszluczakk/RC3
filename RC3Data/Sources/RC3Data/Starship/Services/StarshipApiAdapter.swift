@@ -8,15 +8,7 @@
 import Foundation
 import Combine
 
-public class StarshipApiAdapterBase {
-    @Published public var data: [DateItemProtocol] = []
-}
-
-public protocol StarshipApiAdapterProtocol: StarshipApiAdapterBase {
-    func getData()
-}
-
-class StarshipApiAdapter: StarshipApiAdapterBase, StarshipApiAdapterProtocol {
+class StarshipApiAdapter: DataApiAdapterBase, DataApiAdapterProtocol {
     private let starshipApi: StarshipApiProtocol
     private var subscription: AnyCancellable?
     
