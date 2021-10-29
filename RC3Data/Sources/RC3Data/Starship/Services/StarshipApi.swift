@@ -8,15 +8,11 @@
 import Foundation
 import Combine
 
-class StarshipApiBase {
-    @Published var data: [Starship] = []
+protocol StarshipApiProtocol {
+    func getAll() -> AnyPublisher<[Starship], Error>
 }
 
-protocol StarshipApiProtocol: StarshipApiBase {
-    func getData()
-}
-
-class StarshipApi: StarshipApiBase, StarshipApiProtocol {
+class StarshipApi: StarshipApiProtocol {
     private let networkManager: NetworkManagerProtocol
     private var subscription: AnyCancellable?
     
@@ -24,16 +20,14 @@ class StarshipApi: StarshipApiBase, StarshipApiProtocol {
         self.networkManager = networkManager
     }
     
-    func getData() {
+    func getAll() -> AnyPublisher<[Starship], Error> {
         guard let url = URL(string: "https://swapi.dev/api/starships") else {
-            return
+            return Empty().eraseToAnyPublisher()
         }
         
-        subscription = networkManager.download(url: url)
+        return networkManager.download(url: url)
             .decode(type: StarshipResult.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: networkManager.handleCompletion, receiveValue: { [weak self] (returnedData) in
-                self?.data = returnedData.results
-                self?.subscription?.cancel()
-            })
+            .map { returnedResult in returnedResult.results }
+            .eraseToAnyPublisher()
     }
 }

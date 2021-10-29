@@ -8,32 +8,21 @@
 import Foundation
 import Combine
 
-class StarshipApiAdapter: DataApiAdapterBase, DataApiAdapterProtocol {
+class StarshipApiAdapter: DataApiAdapterProtocol {
     private let starshipApi: StarshipApiProtocol
     private var subscription: AnyCancellable?
     
     init(starshipApi: StarshipApiProtocol) {
         self.starshipApi = starshipApi
-        super.init()
-        subscribe()
     }
     
-    func getData() {
-        starshipApi.getData()
+    func getAll() -> AnyPublisher<[DateItemProtocol], Error>{
+        starshipApi.getAll().map(mapStartshipsToStarshipDtos).eraseToAnyPublisher()
     }
 }
 
 extension StarshipApiAdapter {
-    private func subscribe() {
-        subscription = starshipApi.$data
-            .map(mapStartshipsToStarshipDtos)
-            .sink { [weak self] returnedData in
-                self?.data = returnedData
-                self?.subscription?.cancel()
-            }
-    }
-    
-    private func mapStartshipsToStarshipDtos(starships: [Starship]) -> [StarshipDto] {
+    private func mapStartshipsToStarshipDtos(starships: [Starship]) -> [DateItemProtocol] {
         starships.map { $0.mapToDto() }
     }
 }

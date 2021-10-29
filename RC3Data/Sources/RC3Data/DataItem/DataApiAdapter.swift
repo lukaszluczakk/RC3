@@ -6,11 +6,8 @@
 //
 
 import Foundation
+import Combine
 
-public class DataApiAdapterBase {
-    @Published public var data: [DateItemProtocol] = []
-}
-
-public protocol DataApiAdapterProtocol: DataApiAdapterBase {
-    func getData()
+public protocol DataApiAdapterProtocol {
+    func getAll() -> AnyPublisher<[DateItemProtocol], Error>
 }

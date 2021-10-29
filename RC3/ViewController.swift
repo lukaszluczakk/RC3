@@ -23,15 +23,31 @@ class ViewController: UIViewController {
         dataSource = DataSource()
         tableView.dataSource = dataSource
         
-        dataApiAdapter.$data
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(up), for: .valueChanged)
+        
+        dataApiAdapter.getAll()
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] (returnedData) in
+            .sink { status in
+                print(status)
+            } receiveValue: { [weak self] returnedData in
                 self?.dataSource.setDataSource(dataSource: returnedData)
                 self?.tableView.reloadData()
             }.store(in: &cancellable)
-        
-        dataApiAdapter.getData()
     }
+    
+    @objc private func up(){
+        dataApiAdapter.getAll()
+            .receive(on: DispatchQueue.main)
+            .sink { status in
+                print(status)
+            } receiveValue: { [weak self] returnedData in
+                self?.dataSource.setDataSource(dataSource: returnedData)
+                self?.tableView.reloadData()
+                self?.tableView.refreshControl?.endRefreshing()
+            }.store(in: &cancellable)
+        }
+    
 }
 
 class DataSource: NSObject {
