@@ -29,12 +29,11 @@ class StarshipApi: StarshipApiBase, StarshipApiProtocol {
             return
         }
         
-        
         subscription = networkManager.download(url: url)
-            .decode(type: [Starship].self, decoder: JSONDecoder())
+            .decode(type: StarshipResult.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: networkManager.handleCompletion, receiveValue: { [weak self] (returnedData) in
-                self?.data = returnedData
+                self?.data = returnedData.results
                 self?.subscription?.cancel()
             })
     }

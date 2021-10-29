@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public protocol NetworkManagerProtocol {
+protocol NetworkManagerProtocol {
     func download(url: URL) -> AnyPublisher<Data, Error>
     func handleCompletion(completion: Subscribers.Completion<Error>)
 }
