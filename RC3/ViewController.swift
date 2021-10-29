@@ -22,10 +22,7 @@ class ViewController: UIViewController {
         dataApiAdapter = DataApiAdapterFactory.create()
         dataSource = DataSource()
         tableView.dataSource = dataSource
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(up), for: .valueChanged)
-        
+
         dataApiAdapter.getAll()
             .receive(on: DispatchQueue.main)
             .sink { status in
@@ -35,19 +32,6 @@ class ViewController: UIViewController {
                 self?.tableView.reloadData()
             }.store(in: &cancellable)
     }
-    
-    @objc private func up(){
-        dataApiAdapter.getAll()
-            .receive(on: DispatchQueue.main)
-            .sink { status in
-                print(status)
-            } receiveValue: { [weak self] returnedData in
-                self?.dataSource.setDataSource(dataSource: returnedData)
-                self?.tableView.reloadData()
-                self?.tableView.refreshControl?.endRefreshing()
-            }.store(in: &cancellable)
-        }
-    
 }
 
 class DataSource: NSObject {
@@ -57,7 +41,7 @@ class DataSource: NSObject {
         self.dataSource = dataSource
     }
     
-    func dataItem(at row: Int) -> DateItemProtocol {
+    func item(at row: Int) -> DateItemProtocol {
         dataSource[row]
     }
 }
@@ -74,7 +58,7 @@ extension DataSource: UITableViewDataSource {
             fatalError("Unable to dequeue cell")
         }
         
-        let dataItem = dataItem(at: indexPath.row)
+        let dataItem = item(at: indexPath.row)
         
         cell.nameLabel.text = dataItem.name
         

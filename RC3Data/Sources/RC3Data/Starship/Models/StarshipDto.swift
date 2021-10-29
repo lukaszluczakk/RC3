@@ -8,12 +8,15 @@
 import Foundation
 
 class StarshipDto: DateItemProtocol {
+    var select: SelectDataItemDto
+    
     let name: String
     let model: String
     let type: DataItemType = .sharship
     
-    init(name: String, model: String) {
+    init(name: String, model: String, select: @escaping SelectDataItemDto) {
         self.name = name
         self.model = model
+        self.select = select
     }
 }

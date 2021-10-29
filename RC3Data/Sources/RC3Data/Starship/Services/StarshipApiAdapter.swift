@@ -23,6 +23,10 @@ class StarshipApiAdapter: DataApiAdapterProtocol {
 
 extension StarshipApiAdapter {
     private func mapStartshipsToStarshipDtos(starships: [Starship]) -> [DateItemProtocol] {
-        starships.map { $0.mapToDto() }
+        starships.map {
+            StarshipDto(name: $0.name, model: $0.model) {
+                "asdadasdas"
+            }
+        }
     }
 }

@@ -15,9 +15,3 @@ struct Starship: Codable {
     let name: String
     let model: String
 }
-
-extension Starship {
-    func mapToDto() -> StarshipDto {
-        StarshipDto(name: self.name, model: self.model)
-    }
-}
