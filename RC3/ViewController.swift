@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         tableView.dataSource = dataSource
         
         dataApiAdapter.$data
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] (returnedData) in
                 self?.dataSource.setDataSource(dataSource: returnedData)
                 self?.tableView.reloadData()
