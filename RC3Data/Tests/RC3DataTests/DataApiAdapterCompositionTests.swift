@@ -10,7 +10,7 @@ import Combine
 @testable import RC3Data
 
 final class DataApiAdapterCompositionTests: XCTestCase {
-    func testGetAllShouldReturnDataFromSpecificApiAdapters() {
+    func testGetAllShouldReturnsDataFromSpecificApiAdapters() {
         let apiAdapter = DataApiAdapterComposition(starshipApiAdapter: createStarshipApiAdapter(), vehicleApiAdapter: createVehicleDataApiAdapter())
         
         let exp = expectation(description: "Wait for data")
@@ -32,12 +32,12 @@ final class DataApiAdapterCompositionTests: XCTestCase {
     private func createStarshipApiAdapter() -> DataApiAdapterProtocol {
         let data = [
             DataItem(name: "Item 1", model: "Model 1", type: .sharship) {
-                Just(DataItemDetails(name: "Item 1"))
+                Just(self.createDataItemDetails())
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             },
             DataItem(name: "Item 2", model: "Model 2", type: .sharship) {
-                Just(DataItemDetails(name: "Item 2"))
+                Just(self.createDataItemDetails())
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
@@ -49,17 +49,21 @@ final class DataApiAdapterCompositionTests: XCTestCase {
     private func createVehicleDataApiAdapter() -> DataApiAdapterProtocol {
         let data = [
             DataItem(name: "Item 3", model: "Model 3", type: .vehicle) {
-                Just(DataItemDetails(name: "Item 3"))
+                Just(self.createDataItemDetails())
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             },
             DataItem(name: "Item 4", model: "Model 4", type: .vehicle) {
-                Just(DataItemDetails(name: "Item 4"))
+                Just(self.createDataItemDetails())
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
         ]
         
         return DataApiAdapter(data: data)
+    }
+    
+    private func createDataItemDetails() -> DataItemDetails {
+        DataItemDetails(name: "", model: "", manufacturer: "", costInCredits: "", length: "", mglt: "", crew: "", passengers: "", cargoCapacity: "", consumables: "", className: "")
     }
 }

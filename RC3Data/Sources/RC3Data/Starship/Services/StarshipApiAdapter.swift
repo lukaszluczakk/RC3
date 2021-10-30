@@ -25,7 +25,7 @@ extension StarshipApiAdapter {
         starships.map { item in
             return DataItem(name: item.name, model: item.model, type: .sharship) {
                 self.starshipApi.get(url: URL(string: item.url)!)
-                    .map { returnedData in DataItemDetails(name: returnedData.name) }
+                    .map { $0.mapToDataItemDetails() }
                     .eraseToAnyPublisher()
             }
         }

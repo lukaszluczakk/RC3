@@ -17,7 +17,7 @@
 		F486DE04272B037F00011A1D /* RC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DE03272B037F00011A1D /* RC3UITests.swift */; };
 		F486DE06272B037F00011A1D /* RC3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */; };
 		F486DE16272B06DF00011A1D /* RC3Data in Frameworks */ = {isa = PBXBuildFile; productRef = F486DE15272B06DF00011A1D /* RC3Data */; };
-		F4B27C35272C989E00D0A8D4 /* DataItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B27C34272C989E00D0A8D4 /* DataItemViewController.swift */; };
+		F4B27C35272C989E00D0A8D4 /* DataItemDetailsViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */; };
 		F4E8C53F272B386C0093C4D9 /* DataItemListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C53E272B386C0093C4D9 /* DataItemListCellView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,7 @@
 		F486DE03272B037F00011A1D /* RC3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3UITests.swift; sourceTree = "<group>"; };
 		F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F486DE13272B068100011A1D /* RC3Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RC3Data; sourceTree = "<group>"; };
-		F4B27C34272C989E00D0A8D4 /* DataItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemViewController.swift; sourceTree = "<group>"; };
+		F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsViewControler.swift; sourceTree = "<group>"; };
 		F4E8C53E272B386C0093C4D9 /* DataItemListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +116,7 @@
 				F486DDED272B037F00011A1D /* LaunchScreen.storyboard */,
 				F486DDF0272B037F00011A1D /* Info.plist */,
 				F4E8C53E272B386C0093C4D9 /* DataItemListCellView.swift */,
-				F4B27C34272C989E00D0A8D4 /* DataItemViewController.swift */,
+				F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */,
 			);
 			path = RC3;
 			sourceTree = "<group>";
@@ -280,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F486DDE7272B037F00011A1D /* DataListItemViewController.swift in Sources */,
-				F4B27C35272C989E00D0A8D4 /* DataItemViewController.swift in Sources */,
+				F4B27C35272C989E00D0A8D4 /* DataItemDetailsViewControler.swift in Sources */,
 				F4E8C53F272B386C0093C4D9 /* DataItemListCellView.swift in Sources */,
 				F486DDE3272B037F00011A1D /* AppDelegate.swift in Sources */,
 				F486DDE5272B037F00011A1D /* SceneDelegate.swift in Sources */,

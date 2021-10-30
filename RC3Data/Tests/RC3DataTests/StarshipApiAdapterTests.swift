@@ -2,11 +2,11 @@ import XCTest
 import Combine
 @testable import RC3Data
 
-final class RC3DataTests: XCTestCase {
-    func testGetAllShouldReturnStarships() {
+final class StarshipApiAdapterTests: XCTestCase {
+    func testGetAllShouldReturnsStarships() {
         let starships = [
-            StarshipItem(name: "Item 1", model: "Model 1", url: "http://www.google.pl"),
-            StarshipItem(name: "Item 2", model: "Model 2", url: "http://www.google.com"),
+            StarshipItem(name: "Name 1", model: "Model 1", url: "http://www.google.pl"),
+            StarshipItem(name: "Name 1", model: "Model 2", url: "http://www.google.com"),
         ]
         
         let api = StarshipApiMock(starships: starships)
@@ -19,17 +19,17 @@ final class RC3DataTests: XCTestCase {
             print(completion)
         } receiveValue: { (returnedData) in
             XCTAssertEqual(2, returnedData.count)
-            XCTAssertEqual("Item 1", returnedData[0].name)
-            XCTAssertEqual("Model 1", returnedData[0].model)
+            XCTAssertEqual(starships[0].name, returnedData[0].name)
+            XCTAssertEqual(starships[0].model, returnedData[0].model)
             exp.fulfill()
         }.store(in: &cancellable)
 
         wait(for: [exp], timeout: 0.1)
     }
     
-    func testStarshipSelectShouldReturnStarshipDetails() {
-        let starship = StarshipItem(name: "Item 1", model: "Model 1", url: "http://www.google.pl")
-        let starshipDetails = StarshipDetails(name: "Detail item 1")
+    func testStarshipSelectShouldReturnsStarshipDetails() {
+        let starship = StarshipItem(name: "Name 1", model: "Model 1", url: "http://www.google.com")
+        let starshipDetails = StarshipDetails(name: "Name 1", model: "Model 1", manufacturer: "Manufacturer 1", costInCredits: "100", length: "200", mglt: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "5 days", starshipClass: "Starfighter")
         
         let api = StarshipApiMock(starships: [starship], starshipDetails: starshipDetails)
         let apiAdapter = StarshipApiAdapter(starshipApi: api)
@@ -48,13 +48,27 @@ final class RC3DataTests: XCTestCase {
                 
                 returnedData[0].select().sink { selectCompletion in
                     print(selectCompletion)
-                } receiveValue: { (starshipDetail) in
-                    XCTAssertEqual("Detail item 1", starshipDetail.name)
+                } receiveValue: { returnedStarshipDetails in
+                    self.starshipDetailsShouldBeEqualDataItemDetails(starshipDetails: starshipDetails, dataItemDetails: returnedStarshipDetails)
                     exp.fulfill()
                 }.store(in: &cancellable)
                 
             }.store(in: &cancellable)
 
         wait(for: [exp], timeout: 0.1)
+    }
+    
+    private func starshipDetailsShouldBeEqualDataItemDetails(starshipDetails: StarshipDetails, dataItemDetails: DataItemDetailsProtocol) {
+        XCTAssertEqual(starshipDetails.name, dataItemDetails.name)
+        XCTAssertEqual(starshipDetails.model, dataItemDetails.model)
+        XCTAssertEqual(starshipDetails.manufacturer, dataItemDetails.manufacturer)
+        XCTAssertEqual(starshipDetails.costInCredits, dataItemDetails.costInCredits)
+        XCTAssertEqual(starshipDetails.length, dataItemDetails.length)
+        XCTAssertEqual(starshipDetails.mglt, dataItemDetails.mglt)
+        XCTAssertEqual(starshipDetails.crew, dataItemDetails.crew)
+        XCTAssertEqual(starshipDetails.passengers, dataItemDetails.passengers)
+        XCTAssertEqual(starshipDetails.cargoCapacity, dataItemDetails.cargoCapacity)
+        XCTAssertEqual(starshipDetails.consumables, dataItemDetails.consumables)
+        XCTAssertEqual(starshipDetails.starshipClass, dataItemDetails.className)
     }
 }

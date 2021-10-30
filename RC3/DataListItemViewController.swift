@@ -36,12 +36,14 @@ class DataListItemViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if let indexPath = tableView.indexPathForSelectedRow{
                 let selectedRow = indexPath.row
-                let webViewController = segue.destination
+                let dataItemController = segue.destination as! DataItemDetailsViewControler
                 let selectedItem = dataSource.item(at: selectedRow)
-                selectedItem.select().sink { Status in
-                    
+                selectedItem.select()
+                    .receive(on: DispatchQueue.main)
+                    .sink { Status in
+                    print(Status)
                 } receiveValue: { returnedData in
-                    print(returnedData)
+                    dataItemController.configure(dataItemDetails: returnedData)
                 }.store(in: &cancellable)
 
             }
