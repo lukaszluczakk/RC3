@@ -24,7 +24,7 @@ final class RC3DataTests: XCTestCase {
             exp.fulfill()
         }.store(in: &cancellable)
 
-        wait(for: [exp], timeout: 1)
+        wait(for: [exp], timeout: 0.1)
     }
     
     func testStarshipSelectShouldReturnStarshipDetails() {
@@ -55,6 +55,6 @@ final class RC3DataTests: XCTestCase {
                 
             }.store(in: &cancellable)
 
-        wait(for: [exp], timeout: 1)
+        wait(for: [exp], timeout: 0.1)
     }
 }
