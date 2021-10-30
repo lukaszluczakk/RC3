@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import RC3Data
 
-class ViewController: UIViewController {
+class DataListItemViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
@@ -32,6 +32,20 @@ class ViewController: UIViewController {
                 self?.tableView.reloadData()
             }.store(in: &cancellable)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let selectedRow = indexPath.row
+                let webViewController = segue.destination
+                let selectedItem = dataSource.item(at: selectedRow)
+                selectedItem.select().sink { Status in
+                    
+                } receiveValue: { returnedData in
+                    print(returnedData)
+                }.store(in: &cancellable)
+
+            }
+        }
 }
 
 class DataSource: NSObject {
@@ -54,7 +68,7 @@ extension DataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier, for: indexPath) as? CellView else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier, for: indexPath) as? DataItemListCellView else {
             fatalError("Unable to dequeue cell")
         }
         

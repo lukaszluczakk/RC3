@@ -10,7 +10,6 @@ import Combine
 
 class StarshipApiAdapter: DataApiAdapterProtocol {
     private let starshipApi: StarshipApiProtocol
-    private var subscription: AnyCancellable?
     
     init(starshipApi: StarshipApiProtocol) {
         self.starshipApi = starshipApi
@@ -22,10 +21,12 @@ class StarshipApiAdapter: DataApiAdapterProtocol {
 }
 
 extension StarshipApiAdapter {
-    private func mapStartshipsToStarshipDtos(starships: [Starship]) -> [DateItemProtocol] {
-        starships.map {
-            StarshipDto(name: $0.name, model: $0.model) {
-                "asdadasdas"
+    private func mapStartshipsToStarshipDtos(starships: [StarshipItem]) -> [DateItemProtocol] {
+        starships.map { item in
+            return DataItem(name: item.name, model: item.model, type: .sharship) {
+                self.starshipApi.get(url: URL(string: item.url)!)
+                    .map { returnedData in DataItemDetails(name: returnedData.name) }
+                    .eraseToAnyPublisher()
             }
         }
     }

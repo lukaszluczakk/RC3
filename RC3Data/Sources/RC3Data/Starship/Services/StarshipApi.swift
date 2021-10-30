@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 protocol StarshipApiProtocol {
-    func getAll() -> AnyPublisher<[Starship], Error>
+    func getAll() -> AnyPublisher<[StarshipItem], Error>
+    func get(url: URL) -> AnyPublisher<StarshipDetails, Error>
 }
 
 class StarshipApi: StarshipApiProtocol {
@@ -20,7 +21,7 @@ class StarshipApi: StarshipApiProtocol {
         self.networkManager = networkManager
     }
     
-    func getAll() -> AnyPublisher<[Starship], Error> {
+    func getAll() -> AnyPublisher<[StarshipItem], Error> {
         guard let url = URL(string: "https://swapi.dev/api/starships") else {
             return Empty().eraseToAnyPublisher()
         }
@@ -28,6 +29,12 @@ class StarshipApi: StarshipApiProtocol {
         return networkManager.download(url: url)
             .decode(type: StarshipResult.self, decoder: JSONDecoder())
             .map { returnedResult in returnedResult.results }
+            .eraseToAnyPublisher()
+    }
+    
+    func get(url: URL) -> AnyPublisher<StarshipDetails, Error> {
+        return networkManager.download(url: url)
+            .decode(type: StarshipDetails.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }

@@ -7,6 +7,6 @@
 
 import UIKit
 
-class CellView: UITableViewCell {
+class DataItemListCellView: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
 }

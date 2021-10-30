@@ -8,10 +8,11 @@
 import Foundation
 
 struct StarshipResult: Codable {
-    let results: [Starship]
+    let results: [StarshipItem]
 }
 
-struct Starship: Codable {
+struct StarshipItem: Codable {
     let name: String
     let model: String
+    let url: String
 }
