@@ -7,6 +7,15 @@
 
 import Foundation
 
-public enum DataItemType {
-    case sharship, vehicle
+public enum DataItemType: String {
+    case starship, vehicle
+    
+    public var description: String {
+        switch self {
+        case .vehicle:
+            return "Vehicle"
+        case .starship:
+            return "Starship"
+        }
+    }
 }

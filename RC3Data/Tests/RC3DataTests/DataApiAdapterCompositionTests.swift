@@ -20,7 +20,7 @@ final class DataApiAdapterCompositionTests: XCTestCase {
             print(completion)
         } receiveValue: { (returnedData) in
             XCTAssertEqual(4, returnedData.count)
-            XCTAssertEqual(2, returnedData.filter({ $0.type == .sharship }).count)
+            XCTAssertEqual(2, returnedData.filter({ $0.type == .starship }).count)
             XCTAssertEqual(2, returnedData.filter({ $0.type == .vehicle }).count)
             
             exp.fulfill()
@@ -31,12 +31,12 @@ final class DataApiAdapterCompositionTests: XCTestCase {
     
     private func createStarshipApiAdapter() -> DataApiAdapterProtocol {
         let data = [
-            DataItem(name: "Item 1", model: "Model 1", type: .sharship) {
+            DataItem(name: "Item 1", model: "Model 1", type: .starship) {
                 Just(self.createDataItemDetails())
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             },
-            DataItem(name: "Item 2", model: "Model 2", type: .sharship) {
+            DataItem(name: "Item 2", model: "Model 2", type: .starship) {
                 Just(self.createDataItemDetails())
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()

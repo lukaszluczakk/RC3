@@ -10,9 +10,11 @@ import UIKit
 class DataItemListViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var modelLabel: UILabel!
+    @IBOutlet var typeLabel: UILabel!
     
-    func configure(name: String, model: String) {
+    func configure(name: String, model: String, type: String) {
         nameLabel.text = name
         modelLabel.text = model
+        typeLabel.text = type
     }
 }

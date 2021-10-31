@@ -23,7 +23,7 @@ class StarshipApiAdapter: DataApiAdapterProtocol {
 extension StarshipApiAdapter {
     private func mapToDataItem(starships: [StarshipItem]) -> [DataItemProtocol] {
         starships.map { item in
-            return DataItem(name: item.name, model: item.model, type: .sharship) {
+            return DataItem(name: item.name, model: item.model, type: .starship) {
                 self.api.get(url: URL(string: item.url)!)
                     .map { $0.mapToDataItemDetails() }
                     .eraseToAnyPublisher()

@@ -35,7 +35,7 @@ extension DataItemListSource: UITableViewDataSource {
         
         let dataItem = item(at: indexPath.row)
         
-        cell.configure(name: dataItem.name, model: dataItem.model)
+        cell.configure(name: dataItem.name, model: dataItem.model, type: dataItem.type.description)
         
         return cell
     }

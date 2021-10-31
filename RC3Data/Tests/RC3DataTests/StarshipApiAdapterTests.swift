@@ -21,7 +21,7 @@ final class StarshipApiAdapterTests: XCTestCase {
             XCTAssertEqual(2, returnedData.count)
             XCTAssertEqual(starships[0].name, returnedData[0].name)
             XCTAssertEqual(starships[0].model, returnedData[0].model)
-            XCTAssertEqual(DataItemType.sharship, returnedData[0].type)
+            XCTAssertEqual(DataItemType.starship, returnedData[0].type)
             exp.fulfill()
         }.store(in: &cancellable)
 

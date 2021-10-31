@@ -10,7 +10,6 @@ import RC3Data
 import Combine
 
 class DataItemDetailsViewControler: UITableViewController {
-    
     @IBOutlet var nameLabel: UILabel!
     
     private var dataItemDetails: DataItemDetailsProtocol!

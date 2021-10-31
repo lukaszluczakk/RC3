@@ -10,7 +10,6 @@ import Combine
 import RC3Data
 
 class DataItemListViewController: UIViewController {
-    
     @IBOutlet var tableView: UITableView!
     
     private var dataApiAdapter: DataApiAdapterProtocol!
@@ -22,7 +21,7 @@ class DataItemListViewController: UIViewController {
         dataApiAdapter = DataApiAdapterFactory.create()
         dataSource = DataItemListSource()
         tableView.dataSource = dataSource
-
+        
         dataApiAdapter.getAll()
             .receive(on: DispatchQueue.main)
             .sink { status in
@@ -34,11 +33,11 @@ class DataItemListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let indexPath = tableView.indexPathForSelectedRow{
-                let selectedRow = indexPath.row
-                let dataItemController = segue.destination as! DataItemDetailsViewControler
-                let selectedItem = dataSource.item(at: selectedRow)
-                dataItemController.configure(dataItem: selectedItem)
-            }
+        if let indexPath = tableView.indexPathForSelectedRow{
+            let selectedRow = indexPath.row
+            let dataItemController = segue.destination as! DataItemDetailsViewControler
+            let selectedItem = dataSource.item(at: selectedRow)
+            dataItemController.configure(dataItem: selectedItem)
         }
+    }
 }
