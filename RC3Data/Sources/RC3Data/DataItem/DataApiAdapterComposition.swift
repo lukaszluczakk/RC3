@@ -17,7 +17,7 @@ class DataApiAdapterComposition: DataApiAdapterProtocol {
         self.vehicleApiAdapter = vehicleApiAdapter
     }
     
-    func getAll() -> AnyPublisher<[DateItemProtocol], Error> {
+    func getAll() -> AnyPublisher<[DataItemProtocol], Error> {
         Publishers
             .Zip(starshipApiAdapter.getAll(), vehicleApiAdapter.getAll())
             .map { (starships, vehicles) in

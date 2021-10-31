@@ -6,11 +6,11 @@ final class StarshipApiAdapterTests: XCTestCase {
     func testGetAllShouldReturnsStarships() {
         let starships = [
             StarshipItem(name: "Name 1", model: "Model 1", url: "http://www.google.pl"),
-            StarshipItem(name: "Name 1", model: "Model 2", url: "http://www.google.com"),
+            StarshipItem(name: "Name 2", model: "Model 2", url: "http://www.google.com"),
         ]
         
-        let api = StarshipApiMock(starships: starships)
-        let apiAdapter = StarshipApiAdapter(starshipApi: api)
+        let api = StarshipApiMock(items: starships)
+        let apiAdapter = StarshipApiAdapter(api: api)
         
         let exp = expectation(description: "Wait for data")
         var cancellable = Set<AnyCancellable>()
@@ -21,6 +21,7 @@ final class StarshipApiAdapterTests: XCTestCase {
             XCTAssertEqual(2, returnedData.count)
             XCTAssertEqual(starships[0].name, returnedData[0].name)
             XCTAssertEqual(starships[0].model, returnedData[0].model)
+            XCTAssertEqual(DataItemType.sharship, returnedData[0].type)
             exp.fulfill()
         }.store(in: &cancellable)
 
@@ -29,10 +30,10 @@ final class StarshipApiAdapterTests: XCTestCase {
     
     func testStarshipSelectShouldReturnsStarshipDetails() {
         let starship = StarshipItem(name: "Name 1", model: "Model 1", url: "http://www.google.com")
-        let starshipDetails = StarshipDetails(name: "Name 1", model: "Model 1", manufacturer: "Manufacturer 1", costInCredits: "100", length: "200", mglt: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "5 days", starshipClass: "Starfighter")
+        let starshipDetails = StarshipItemDetails(name: "Name 1", model: "Model 1", manufacturer: "Manufacturer 1", costInCredits: "100", length: "200", mglt: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "5 days", starshipClass: "Starship class")
         
-        let api = StarshipApiMock(starships: [starship], starshipDetails: starshipDetails)
-        let apiAdapter = StarshipApiAdapter(starshipApi: api)
+        let api = StarshipApiMock(items: [starship], itemDetails: starshipDetails)
+        let apiAdapter = StarshipApiAdapter(api: api)
         
         let exp = expectation(description: "Wait for data")
         var cancellable = Set<AnyCancellable>()
@@ -41,11 +42,6 @@ final class StarshipApiAdapterTests: XCTestCase {
             .sink { completion in
                 print(completion)
             } receiveValue: { (returnedData) in
-                guard returnedData.count == 1 else {
-                    XCTFail()
-                    return
-                }
-                
                 returnedData[0].select().sink { selectCompletion in
                     print(selectCompletion)
                 } receiveValue: { returnedStarshipDetails in
@@ -58,7 +54,7 @@ final class StarshipApiAdapterTests: XCTestCase {
         wait(for: [exp], timeout: 0.1)
     }
     
-    private func starshipDetailsShouldBeEqualDataItemDetails(starshipDetails: StarshipDetails, dataItemDetails: DataItemDetailsProtocol) {
+    private func starshipDetailsShouldBeEqualDataItemDetails(starshipDetails: StarshipItemDetails, dataItemDetails: DataItemDetailsProtocol) {
         XCTAssertEqual(starshipDetails.name, dataItemDetails.name)
         XCTAssertEqual(starshipDetails.model, dataItemDetails.model)
         XCTAssertEqual(starshipDetails.manufacturer, dataItemDetails.manufacturer)
@@ -70,5 +66,9 @@ final class StarshipApiAdapterTests: XCTestCase {
         XCTAssertEqual(starshipDetails.cargoCapacity, dataItemDetails.cargoCapacity)
         XCTAssertEqual(starshipDetails.consumables, dataItemDetails.consumables)
         XCTAssertEqual(starshipDetails.starshipClass, dataItemDetails.className)
+    }
+    
+    class StarshipApiMock: SwapiApiMock<StarshipItem, StarshipItemDetails>, StarshipApiProtocol {
+        
     }
 }

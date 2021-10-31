@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F43B9424272F33FE0055A548 /* DataItemListSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B9423272F33FE0055A548 /* DataItemListSource.swift */; };
 		F486DDE3272B037F00011A1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DDE2272B037F00011A1D /* AppDelegate.swift */; };
 		F486DDE5272B037F00011A1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DDE4272B037F00011A1D /* SceneDelegate.swift */; };
-		F486DDE7272B037F00011A1D /* DataListItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DDE6272B037F00011A1D /* DataListItemViewController.swift */; };
+		F486DDE7272B037F00011A1D /* DataItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DDE6272B037F00011A1D /* DataItemListViewController.swift */; };
 		F486DDEA272B037F00011A1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486DDE8272B037F00011A1D /* Main.storyboard */; };
 		F486DDEC272B037F00011A1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F486DDEB272B037F00011A1D /* Assets.xcassets */; };
 		F486DDEF272B037F00011A1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486DDED272B037F00011A1D /* LaunchScreen.storyboard */; };
@@ -18,7 +19,7 @@
 		F486DE06272B037F00011A1D /* RC3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */; };
 		F486DE16272B06DF00011A1D /* RC3Data in Frameworks */ = {isa = PBXBuildFile; productRef = F486DE15272B06DF00011A1D /* RC3Data */; };
 		F4B27C35272C989E00D0A8D4 /* DataItemDetailsViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */; };
-		F4E8C53F272B386C0093C4D9 /* DataItemListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C53E272B386C0093C4D9 /* DataItemListCellView.swift */; };
+		F4E8C53F272B386C0093C4D9 /* DataItemListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F43B9423272F33FE0055A548 /* DataItemListSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListSource.swift; sourceTree = "<group>"; };
 		F486DDDF272B037F00011A1D /* RC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F486DDE2272B037F00011A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F486DDE4272B037F00011A1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F486DDE6272B037F00011A1D /* DataListItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataListItemViewController.swift; sourceTree = "<group>"; };
+		F486DDE6272B037F00011A1D /* DataItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListViewController.swift; sourceTree = "<group>"; };
 		F486DDE9272B037F00011A1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F486DDEB272B037F00011A1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F486DDEE272B037F00011A1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,7 +56,7 @@
 		F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F486DE13272B068100011A1D /* RC3Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RC3Data; sourceTree = "<group>"; };
 		F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsViewControler.swift; sourceTree = "<group>"; };
-		F4E8C53E272B386C0093C4D9 /* DataItemListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListCellView.swift; sourceTree = "<group>"; };
+		F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F43B9421272F33750055A548 /* DataItemList */ = {
+			isa = PBXGroup;
+			children = (
+				F486DDE6272B037F00011A1D /* DataItemListViewController.swift */,
+				F43B9423272F33FE0055A548 /* DataItemListSource.swift */,
+				F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */,
+			);
+			path = DataItemList;
+			sourceTree = "<group>";
+		};
+		F43B9422272F339D0055A548 /* DataItemDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */,
+			);
+			path = DataItemDetails;
+			sourceTree = "<group>";
+		};
 		F486DDD6272B037F00011A1D = {
 			isa = PBXGroup;
 			children = (
@@ -108,15 +128,14 @@
 		F486DDE1272B037F00011A1D /* RC3 */ = {
 			isa = PBXGroup;
 			children = (
+				F43B9422272F339D0055A548 /* DataItemDetails */,
+				F43B9421272F33750055A548 /* DataItemList */,
 				F486DDE2272B037F00011A1D /* AppDelegate.swift */,
 				F486DDE4272B037F00011A1D /* SceneDelegate.swift */,
-				F486DDE6272B037F00011A1D /* DataListItemViewController.swift */,
 				F486DDE8272B037F00011A1D /* Main.storyboard */,
 				F486DDEB272B037F00011A1D /* Assets.xcassets */,
 				F486DDED272B037F00011A1D /* LaunchScreen.storyboard */,
 				F486DDF0272B037F00011A1D /* Info.plist */,
-				F4E8C53E272B386C0093C4D9 /* DataItemListCellView.swift */,
-				F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */,
 			);
 			path = RC3;
 			sourceTree = "<group>";
@@ -279,9 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F486DDE7272B037F00011A1D /* DataListItemViewController.swift in Sources */,
+				F486DDE7272B037F00011A1D /* DataItemListViewController.swift in Sources */,
 				F4B27C35272C989E00D0A8D4 /* DataItemDetailsViewControler.swift in Sources */,
-				F4E8C53F272B386C0093C4D9 /* DataItemListCellView.swift in Sources */,
+				F4E8C53F272B386C0093C4D9 /* DataItemListViewCell.swift in Sources */,
+				F43B9424272F33FE0055A548 /* DataItemListSource.swift in Sources */,
 				F486DDE3272B037F00011A1D /* AppDelegate.swift in Sources */,
 				F486DDE5272B037F00011A1D /* SceneDelegate.swift in Sources */,
 			);

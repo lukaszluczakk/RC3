@@ -9,10 +9,14 @@ import Foundation
 
 public class DataApiAdapterFactory {
     public static func create() -> DataApiAdapterProtocol {
-        DataApiAdapterComposition(starshipApiAdapter: createStarshipApiAdapter(), vehicleApiAdapter: createStarshipApiAdapter())
+        DataApiAdapterComposition(starshipApiAdapter: createStarshipApiAdapter(), vehicleApiAdapter: createVehicleApiAdapter())
     }
     
     private static func createStarshipApiAdapter() -> DataApiAdapterProtocol {
-        StarshipApiAdapter(starshipApi: StarshipApi(networkManager: NetworkManager()))
+        StarshipApiAdapter(api: StarshipApi())
+    }
+    
+    private static func createVehicleApiAdapter() -> DataApiAdapterProtocol {
+        VehicleApiAdapter(api: VehicleApi())
     }
 }

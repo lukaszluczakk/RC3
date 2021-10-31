@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct StarshipResult: Codable {
-    let results: [StarshipItem]
-}
-
 struct StarshipItem: Codable {
     let name: String
     let model: String

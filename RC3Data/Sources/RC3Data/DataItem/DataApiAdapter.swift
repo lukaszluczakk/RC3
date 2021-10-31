@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 public protocol DataApiAdapterProtocol {
-    func getAll() -> AnyPublisher<[DateItemProtocol], Error>
+    func getAll() -> AnyPublisher<[DataItemProtocol], Error>
 }

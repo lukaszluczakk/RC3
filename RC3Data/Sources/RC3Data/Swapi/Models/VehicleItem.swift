@@ -7,3 +7,8 @@
 
 import Foundation
 
+struct VehicleItem : Codable{
+    let name: String
+    let model: String
+    let url: String
+}

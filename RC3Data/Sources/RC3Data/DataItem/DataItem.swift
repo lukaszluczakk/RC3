@@ -10,14 +10,14 @@ import Combine
 
 public typealias SelectingDataItemHandler = () -> AnyPublisher<DataItemDetailsProtocol, Error>
 
-public protocol DateItemProtocol {
+public protocol DataItemProtocol {
     var name: String { get }
     var model: String { get }
     var type: DataItemType { get }
     var select: SelectingDataItemHandler { get }
 }
 
-class DataItem: DateItemProtocol {
+class DataItem: DataItemProtocol {
     let name: String
     let model: String
     let type: DataItemType
