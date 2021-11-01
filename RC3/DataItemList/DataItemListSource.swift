@@ -9,7 +9,12 @@ import Foundation
 import UIKit
 import RC3Data
 
-class DataItemListSource: NSObject {
+protocol DataItemListSourceProtocol: NSObject, UITableViewDataSource {
+    func setDataSource(dataSource: [DataItemProtocol])
+    func item(at row: Int) -> DataItemProtocol
+}
+
+class DataItemListSource: NSObject, DataItemListSourceProtocol {
     private var dataSource: [DataItemProtocol] = []
     
     func setDataSource(dataSource: [DataItemProtocol]) {

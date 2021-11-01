@@ -14,13 +14,16 @@
 		F486DDEA272B037F00011A1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486DDE8272B037F00011A1D /* Main.storyboard */; };
 		F486DDEC272B037F00011A1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F486DDEB272B037F00011A1D /* Assets.xcassets */; };
 		F486DDEF272B037F00011A1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F486DDED272B037F00011A1D /* LaunchScreen.storyboard */; };
-		F486DDFA272B037F00011A1D /* RC3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DDF9272B037F00011A1D /* RC3Tests.swift */; };
+		F486DDFA272B037F00011A1D /* DataItemListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DDF9272B037F00011A1D /* DataItemListViewControllerTests.swift */; };
 		F486DE04272B037F00011A1D /* RC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DE03272B037F00011A1D /* RC3UITests.swift */; };
 		F486DE06272B037F00011A1D /* RC3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */; };
 		F486DE16272B06DF00011A1D /* RC3Data in Frameworks */ = {isa = PBXBuildFile; productRef = F486DE15272B06DF00011A1D /* RC3Data */; };
 		F4919B2F272FF03100DACC8B /* DataItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B2E272FF03100DACC8B /* DataItemDetailViewCell.swift */; };
 		F4919B31272FF13F00DACC8B /* DataItemDetailsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B30272FF13F00DACC8B /* DataItemDetailsSource.swift */; };
 		F4919B34272FF4E800DACC8B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B33272FF4E800DACC8B /* Dictionary.swift */; };
+		F4919B3C2730285E00DACC8B /* Dataitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B3B2730285E00DACC8B /* Dataitem.swift */; };
+		F4919B3E2730286C00DACC8B /* DataItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B3D2730286C00DACC8B /* DataItemDetails.swift */; };
+		F4919B402730292300DACC8B /* DataApiAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B3F2730292300DACC8B /* DataApiAdapter.swift */; };
 		F4B27C35272C989E00D0A8D4 /* DataItemDetailsViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */; };
 		F4E8C53F272B386C0093C4D9 /* DataItemListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -53,7 +56,7 @@
 		F486DDEE272B037F00011A1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F486DDF0272B037F00011A1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F486DDF5272B037F00011A1D /* RC3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RC3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F486DDF9272B037F00011A1D /* RC3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3Tests.swift; sourceTree = "<group>"; };
+		F486DDF9272B037F00011A1D /* DataItemListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListViewControllerTests.swift; sourceTree = "<group>"; };
 		F486DDFF272B037F00011A1D /* RC3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RC3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F486DE03272B037F00011A1D /* RC3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3UITests.swift; sourceTree = "<group>"; };
 		F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -61,6 +64,9 @@
 		F4919B2E272FF03100DACC8B /* DataItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailViewCell.swift; sourceTree = "<group>"; };
 		F4919B30272FF13F00DACC8B /* DataItemDetailsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsSource.swift; sourceTree = "<group>"; };
 		F4919B33272FF4E800DACC8B /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		F4919B3B2730285E00DACC8B /* Dataitem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataitem.swift; sourceTree = "<group>"; };
+		F4919B3D2730286C00DACC8B /* DataItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetails.swift; sourceTree = "<group>"; };
+		F4919B3F2730292300DACC8B /* DataApiAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataApiAdapter.swift; sourceTree = "<group>"; };
 		F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsViewControler.swift; sourceTree = "<group>"; };
 		F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,7 +158,10 @@
 		F486DDF8272B037F00011A1D /* RC3Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F486DDF9272B037F00011A1D /* RC3Tests.swift */,
+				F486DDF9272B037F00011A1D /* DataItemListViewControllerTests.swift */,
+				F4919B3B2730285E00DACC8B /* Dataitem.swift */,
+				F4919B3D2730286C00DACC8B /* DataItemDetails.swift */,
+				F4919B3F2730292300DACC8B /* DataApiAdapter.swift */,
 			);
 			path = RC3Tests;
 			sourceTree = "<group>";
@@ -331,7 +340,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F486DDFA272B037F00011A1D /* RC3Tests.swift in Sources */,
+				F4919B3E2730286C00DACC8B /* DataItemDetails.swift in Sources */,
+				F4919B3C2730285E00DACC8B /* Dataitem.swift in Sources */,
+				F4919B402730292300DACC8B /* DataApiAdapter.swift in Sources */,
+				F486DDFA272B037F00011A1D /* DataItemListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

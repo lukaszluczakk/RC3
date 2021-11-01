@@ -13,7 +13,7 @@ struct StarshipItemDetails: Codable {
     let manufacturer: String
     let costInCredits: String
     let length: String
-    let mglt: String
+    let maxAtmospheringSpeed: String
     let crew: String
     let passengers: String
     let cargoCapacity: String
@@ -23,7 +23,7 @@ struct StarshipItemDetails: Codable {
     enum CodingKeys: String, CodingKey {
         case name, model, manufacturer, length, crew, passengers, consumables
         case costInCredits = "cost_in_credits"
-        case mglt = "MGLT"
+        case maxAtmospheringSpeed = "max_atmosphering_speed"
         case cargoCapacity = "cargo_capacity"
         case starshipClass = "starship_class"
     }
@@ -31,6 +31,6 @@ struct StarshipItemDetails: Codable {
 
 extension StarshipItemDetails {
     func mapToDataItemDetails() -> DataItemDetailsProtocol {
-        DataItemDetails(name: self.name, model: self.model, manufacturer: self.manufacturer, costInCredits: self.costInCredits, length: self.length, mglt: self.mglt, crew: self.crew, passengers: self.passengers, cargoCapacity: self.cargoCapacity, consumables: self.consumables, className: self.starshipClass)
+        DataItemDetails(name: self.name, model: self.model, manufacturer: self.manufacturer, costInCredits: self.costInCredits, length: self.length, maxAtmospheringSpeed: self.maxAtmospheringSpeed, crew: self.crew, passengers: self.passengers, cargoCapacity: self.cargoCapacity, consumables: self.consumables, className: self.starshipClass)
     }
 }

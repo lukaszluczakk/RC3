@@ -67,7 +67,7 @@ final class VehicleApiAdapterTests: XCTestCase {
         XCTAssertEqual(vehicleDetails.manufacturer, dataItemDetails.manufacturer)
         XCTAssertEqual(vehicleDetails.costInCredits, dataItemDetails.costInCredits)
         XCTAssertEqual(vehicleDetails.length, dataItemDetails.length)
-        XCTAssertEqual(vehicleDetails.mglt, dataItemDetails.mglt)
+        XCTAssertEqual(vehicleDetails.maxAtmospheringSpeed, dataItemDetails.maxAtmospheringSpeed)
         XCTAssertEqual(vehicleDetails.crew, dataItemDetails.crew)
         XCTAssertEqual(vehicleDetails.passengers, dataItemDetails.passengers)
         XCTAssertEqual(vehicleDetails.cargoCapacity, dataItemDetails.cargoCapacity)

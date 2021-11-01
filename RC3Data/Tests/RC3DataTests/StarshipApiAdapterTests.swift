@@ -60,7 +60,7 @@ final class StarshipApiAdapterTests: XCTestCase {
         XCTAssertEqual(starshipDetails.manufacturer, dataItemDetails.manufacturer)
         XCTAssertEqual(starshipDetails.costInCredits, dataItemDetails.costInCredits)
         XCTAssertEqual(starshipDetails.length, dataItemDetails.length)
-        XCTAssertEqual(starshipDetails.mglt, dataItemDetails.mglt)
+        XCTAssertEqual(starshipDetails.maxAtmospheringSpeed, dataItemDetails.maxAtmospheringSpeed)
         XCTAssertEqual(starshipDetails.crew, dataItemDetails.crew)
         XCTAssertEqual(starshipDetails.passengers, dataItemDetails.passengers)
         XCTAssertEqual(starshipDetails.cargoCapacity, dataItemDetails.cargoCapacity)

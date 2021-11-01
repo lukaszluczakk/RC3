@@ -12,7 +12,7 @@ class DataItemDetailViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var valueLabel: UILabel!
     
-    func configure(name: String, value: String) {
+    func configure(name: String, value: String?) {
         nameLabel.text = name
         valueLabel.text = value
     }

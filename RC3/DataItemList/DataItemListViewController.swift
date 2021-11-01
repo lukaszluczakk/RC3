@@ -13,13 +13,25 @@ class DataItemListViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     private var dataApiAdapter: DataApiAdapterProtocol!
-    private var dataSource: DataItemListSource!
+    private var dataSource: DataItemListSourceProtocol!
     private var cancellable = Set<AnyCancellable>()
+    
+    init(dataApiAdapter: DataApiAdapterProtocol, tableView: UITableView, dataSource: DataItemListSourceProtocol) {
+        self.dataApiAdapter = dataApiAdapter
+        self.tableView = tableView
+        self.dataSource = dataSource
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        dataApiAdapter = DataApiAdapterFactory.create()
+        dataSource = DataItemListSource()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataApiAdapter = DataApiAdapterFactory.create()
-        dataSource = DataItemListSource()
         tableView.dataSource = dataSource
         
         dataApiAdapter.getAll()
