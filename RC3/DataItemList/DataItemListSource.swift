@@ -22,7 +22,7 @@ class DataItemListSource: NSObject {
 }
 
 extension DataItemListSource: UITableViewDataSource {
-    private static let cellIdentifier = "TableViewCell"
+    private static let cellIdentifier = "DataItemListViewCell"
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataSource.count

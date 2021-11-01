@@ -1,5 +1,5 @@
 //
-//  DataItemViewController.swift
+//  DataItemDetailsViewControler.swift
 //  RC3
 //
 //  Created by Łukasz Łuczak on 29/10/2021.
@@ -9,17 +9,29 @@ import UIKit
 import RC3Data
 import Combine
 
-class DataItemDetailsViewControler: UITableViewController {
-    @IBOutlet var nameLabel: UILabel!
+class DataItemDetailsViewControler: UIViewController {
+    @IBOutlet var tableView: UITableView!
     
-    private var dataItemDetails: DataItemDetailsProtocol!
+    private var dataItem: DataItemProtocol!
+    private var dataSource: DataItemDetailsSource!
     private var cancellable = Set<AnyCancellable>()
     
-    func configure(dataItem: DataItemProtocol){
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dataSource = DataItemDetailsSource()
+        tableView.dataSource = dataSource
+        
         dataItem.select()
             .receive(on: DispatchQueue.main)
             .sink { Status in
                 print(Status)
-            } receiveValue: { returnedData in }.store(in: &cancellable)
+            } receiveValue: { [weak self] returnedData in
+                self?.dataSource.setDataSource(dataItemDetails: returnedData)
+                self?.tableView.reloadData()
+            }.store(in: &cancellable)
+    }
+    
+    func configure(dataItem: DataItemProtocol){
+        self.dataItem = dataItem
     }
 }

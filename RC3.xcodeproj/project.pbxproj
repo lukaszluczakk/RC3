@@ -18,6 +18,9 @@
 		F486DE04272B037F00011A1D /* RC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DE03272B037F00011A1D /* RC3UITests.swift */; };
 		F486DE06272B037F00011A1D /* RC3UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */; };
 		F486DE16272B06DF00011A1D /* RC3Data in Frameworks */ = {isa = PBXBuildFile; productRef = F486DE15272B06DF00011A1D /* RC3Data */; };
+		F4919B2F272FF03100DACC8B /* DataItemDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B2E272FF03100DACC8B /* DataItemDetailViewCell.swift */; };
+		F4919B31272FF13F00DACC8B /* DataItemDetailsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B30272FF13F00DACC8B /* DataItemDetailsSource.swift */; };
+		F4919B34272FF4E800DACC8B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B33272FF4E800DACC8B /* Dictionary.swift */; };
 		F4B27C35272C989E00D0A8D4 /* DataItemDetailsViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */; };
 		F4E8C53F272B386C0093C4D9 /* DataItemListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +58,9 @@
 		F486DE03272B037F00011A1D /* RC3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3UITests.swift; sourceTree = "<group>"; };
 		F486DE05272B037F00011A1D /* RC3UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RC3UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F486DE13272B068100011A1D /* RC3Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RC3Data; sourceTree = "<group>"; };
+		F4919B2E272FF03100DACC8B /* DataItemDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailViewCell.swift; sourceTree = "<group>"; };
+		F4919B30272FF13F00DACC8B /* DataItemDetailsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsSource.swift; sourceTree = "<group>"; };
+		F4919B33272FF4E800DACC8B /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsViewControler.swift; sourceTree = "<group>"; };
 		F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */,
+				F4919B2E272FF03100DACC8B /* DataItemDetailViewCell.swift */,
+				F4919B30272FF13F00DACC8B /* DataItemDetailsSource.swift */,
 			);
 			path = DataItemDetails;
 			sourceTree = "<group>";
@@ -128,6 +136,7 @@
 		F486DDE1272B037F00011A1D /* RC3 */ = {
 			isa = PBXGroup;
 			children = (
+				F4919B32272FF4D700DACC8B /* Dictionary */,
 				F43B9422272F339D0055A548 /* DataItemDetails */,
 				F43B9421272F33750055A548 /* DataItemList */,
 				F486DDE2272B037F00011A1D /* AppDelegate.swift */,
@@ -162,6 +171,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4919B32272FF4D700DACC8B /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				F4919B33272FF4E800DACC8B /* Dictionary.swift */,
+			);
+			path = Dictionary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +320,9 @@
 				F4E8C53F272B386C0093C4D9 /* DataItemListViewCell.swift in Sources */,
 				F43B9424272F33FE0055A548 /* DataItemListSource.swift in Sources */,
 				F486DDE3272B037F00011A1D /* AppDelegate.swift in Sources */,
+				F4919B34272FF4E800DACC8B /* Dictionary.swift in Sources */,
+				F4919B2F272FF03100DACC8B /* DataItemDetailViewCell.swift in Sources */,
+				F4919B31272FF13F00DACC8B /* DataItemDetailsSource.swift in Sources */,
 				F486DDE5272B037F00011A1D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
