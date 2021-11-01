@@ -13,8 +13,20 @@ class DataItemDetailsViewControler: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     private var dataItem: DataItemProtocol!
-    private var dataSource: DataItemDetailsSource!
+    private var dataSource: DataItemDetailsSourceProtocol!
     private var cancellable = Set<AnyCancellable>()
+    
+    init(tableView: UITableView, dataSource: DataItemDetailsSourceProtocol) {
+        self.tableView = tableView
+        self.dataSource = dataSource
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        dataSource = DataItemDetailsSource()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

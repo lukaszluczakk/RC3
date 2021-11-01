@@ -24,6 +24,7 @@
 		F4919B3C2730285E00DACC8B /* Dataitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B3B2730285E00DACC8B /* Dataitem.swift */; };
 		F4919B3E2730286C00DACC8B /* DataItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B3D2730286C00DACC8B /* DataItemDetails.swift */; };
 		F4919B402730292300DACC8B /* DataApiAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4919B3F2730292300DACC8B /* DataApiAdapter.swift */; };
+		F4A868A5273064AF0020E715 /* DataItemDetailsViewControlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A868A4273064AF0020E715 /* DataItemDetailsViewControlerTests.swift */; };
 		F4B27C35272C989E00D0A8D4 /* DataItemDetailsViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */; };
 		F4E8C53F272B386C0093C4D9 /* DataItemListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		F4919B3B2730285E00DACC8B /* Dataitem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataitem.swift; sourceTree = "<group>"; };
 		F4919B3D2730286C00DACC8B /* DataItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetails.swift; sourceTree = "<group>"; };
 		F4919B3F2730292300DACC8B /* DataApiAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataApiAdapter.swift; sourceTree = "<group>"; };
+		F4A868A4273064AF0020E715 /* DataItemDetailsViewControlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsViewControlerTests.swift; sourceTree = "<group>"; };
 		F4B27C34272C989E00D0A8D4 /* DataItemDetailsViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemDetailsViewControler.swift; sourceTree = "<group>"; };
 		F4E8C53E272B386C0093C4D9 /* DataItemListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItemListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +164,7 @@
 				F4919B3B2730285E00DACC8B /* Dataitem.swift */,
 				F4919B3D2730286C00DACC8B /* DataItemDetails.swift */,
 				F4919B3F2730292300DACC8B /* DataApiAdapter.swift */,
+				F4A868A4273064AF0020E715 /* DataItemDetailsViewControlerTests.swift */,
 			);
 			path = RC3Tests;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A868A5273064AF0020E715 /* DataItemDetailsViewControlerTests.swift in Sources */,
 				F4919B3E2730286C00DACC8B /* DataItemDetails.swift in Sources */,
 				F4919B3C2730285E00DACC8B /* Dataitem.swift in Sources */,
 				F4919B402730292300DACC8B /* DataApiAdapter.swift in Sources */,

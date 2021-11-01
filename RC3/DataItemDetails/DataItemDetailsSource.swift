@@ -8,7 +8,11 @@
 import UIKit
 import RC3Data
 
-class DataItemDetailsSource: NSObject {
+protocol DataItemDetailsSourceProtocol: NSObject, UITableViewDataSource {
+    func setDataSource(dataItemDetails: DataItemDetailsProtocol)
+}
+
+class DataItemDetailsSource: NSObject, DataItemDetailsSourceProtocol {
     private var dataItemDetails: DataItemDetailsProtocol!
      
     func setDataSource(dataItemDetails: DataItemDetailsProtocol) {

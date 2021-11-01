@@ -19,14 +19,14 @@ class DataItemListViewControllerTests: XCTestCase {
         }
         let dataItems: [DataItemProtocol] = [dataItem]
         let apiAdapter = DataApiAdapter(dataItems: dataItems)
-        let dataSource = DataSourceMock { v in
+        let dataSource = DataSource { v in
             XCTAssertEqual(1, v)
         }
         let controller = DataItemListViewController(dataApiAdapter: apiAdapter, tableView: UITableView(), dataSource: dataSource)
         controller.viewDidLoad()
     }
     
-    class DataSourceMock: DataItemListSource {
+    class DataSource: DataItemListSource {
         typealias SetDataSource = (Int) -> Void
         
         private let setDataSourceCallback: SetDataSource

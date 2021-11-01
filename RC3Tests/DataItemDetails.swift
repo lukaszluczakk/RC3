@@ -26,4 +26,8 @@ extension DataItemDetails {
     static var empty: DataItemDetailsProtocol {
         DataItemDetails(name: "", model: "", manufacturer: "", costInCredits: "", length: "", maxAtmospheringSpeed: "", crew: "", passengers: "", cargoCapacity: "", consumables: "", className: "")
     }
+    
+    static var M1: DataItemDetailsProtocol {
+        DataItemDetails(name: "M1", model: "", manufacturer: "", costInCredits: "", length: "", maxAtmospheringSpeed: "", crew: "", passengers: "", cargoCapacity: "", consumables: "", className: "")
+    }
 }
