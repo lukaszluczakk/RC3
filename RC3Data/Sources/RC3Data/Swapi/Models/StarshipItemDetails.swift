@@ -30,6 +30,8 @@ struct StarshipItemDetails: Codable {
 }
 
 extension StarshipItemDetails {
+    static var M1 = StarshipItemDetails(name: "M1", model: "Model 1", manufacturer: "Manufacturer M1", costInCredits: "100", length: "200", maxAtmospheringSpeed: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "700", starshipClass: "800")
+    
     func mapToDataItemDetails() -> DataItemDetailsProtocol {
         DataItemDetails(name: self.name, model: self.model, manufacturer: self.manufacturer, costInCredits: self.costInCredits, length: self.length, maxAtmospheringSpeed: self.maxAtmospheringSpeed, crew: self.crew, passengers: self.passengers, cargoCapacity: self.cargoCapacity, consumables: self.consumables, className: self.starshipClass)
     }

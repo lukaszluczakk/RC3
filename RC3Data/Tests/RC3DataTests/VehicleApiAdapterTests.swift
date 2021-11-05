@@ -37,7 +37,7 @@ final class VehicleApiAdapterTests: XCTestCase {
     
     func testVehicleSelectShouldReturnsVehicleDetails() {
         let vehicle = VehicleItem(name: "Name 1", model: "Model 1", url: "http://www.google.com")
-        let vehicleDetails = VehicleItemDetails(name: "Name 1", model: "Model 1", manufacturer: "Manufacturer 1", costInCredits: "100", length: "200", mglt: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "5 days", vehicleClass: "Vehicle class")
+        let vehicleDetails = VehicleItemDetails(name: "Name 1", model: "Model 1", manufacturer: "Manufacturer 1", costInCredits: "100", length: "200", maxAtmospheringSpeed: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "5 days", vehicleClass: "Vehicle class")
         
         let api = VehicleApiMock(items: [vehicle], itemDetails: vehicleDetails)
         let apiAdapter = VehicleApiAdapter(api: api)

@@ -4,10 +4,7 @@ import Combine
 
 final class StarshipApiAdapterTests: XCTestCase {
     func testGetAllShouldReturnsStarships() {
-        let starships = [
-            StarshipItem(name: "Name 1", model: "Model 1", url: "http://www.google.pl"),
-            StarshipItem(name: "Name 2", model: "Model 2", url: "http://www.google.com"),
-        ]
+        let starships: [StarshipItem] = [.M1, .M2]
         
         let api = StarshipApiMock(items: starships)
         let apiAdapter = StarshipApiAdapter(api: api)
@@ -29,10 +26,7 @@ final class StarshipApiAdapterTests: XCTestCase {
     }
     
     func testStarshipSelectShouldReturnsStarshipDetails() {
-        let starship = StarshipItem(name: "Name 1", model: "Model 1", url: "http://www.google.com")
-        let starshipDetails = StarshipItemDetails(name: "Name 1", model: "Model 1", manufacturer: "Manufacturer 1", costInCredits: "100", length: "200", mglt: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "5 days", starshipClass: "Starship class")
-        
-        let api = StarshipApiMock(items: [starship], itemDetails: starshipDetails)
+        let api = StarshipApiMock(items: [.M1], itemDetails: .M1)
         let apiAdapter = StarshipApiAdapter(api: api)
         
         let exp = expectation(description: "Wait for data")
@@ -45,7 +39,7 @@ final class StarshipApiAdapterTests: XCTestCase {
                 returnedData[0].select().sink { selectCompletion in
                     print(selectCompletion)
                 } receiveValue: { returnedStarshipDetails in
-                    self.starshipDetailsShouldBeEqualDataItemDetails(starshipDetails: starshipDetails, dataItemDetails: returnedStarshipDetails)
+                    self.starshipDetailsShouldBeEqualDataItemDetails(starshipDetails: .M1, dataItemDetails: returnedStarshipDetails)
                     exp.fulfill()
                 }.store(in: &cancellable)
                 

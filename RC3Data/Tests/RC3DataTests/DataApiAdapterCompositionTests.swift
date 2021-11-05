@@ -32,12 +32,12 @@ final class DataApiAdapterCompositionTests: XCTestCase {
     private func createStarshipApiAdapter() -> DataApiAdapterProtocol {
         let data = [
             DataItem(name: "Item 1", model: "Model 1", type: .starship) {
-                Just(self.createDataItemDetails())
+                Just(DataItemDetails.starshipM1)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             },
             DataItem(name: "Item 2", model: "Model 2", type: .starship) {
-                Just(self.createDataItemDetails())
+                Just(DataItemDetails.starshipM1)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
@@ -49,21 +49,17 @@ final class DataApiAdapterCompositionTests: XCTestCase {
     private func createVehicleDataApiAdapter() -> DataApiAdapterProtocol {
         let data = [
             DataItem(name: "Item 3", model: "Model 3", type: .vehicle) {
-                Just(self.createDataItemDetails())
+                Just(DataItemDetails.vehicleM1)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             },
             DataItem(name: "Item 4", model: "Model 4", type: .vehicle) {
-                Just(self.createDataItemDetails())
+                Just(DataItemDetails.vehicleM1)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
         ]
         
         return DataApiAdapter(data: data)
-    }
-    
-    private func createDataItemDetails() -> DataItemDetails {
-        DataItemDetails(name: "", model: "", manufacturer: "", costInCredits: "", length: "", mglt: "", crew: "", passengers: "", cargoCapacity: "", consumables: "", className: "")
     }
 }

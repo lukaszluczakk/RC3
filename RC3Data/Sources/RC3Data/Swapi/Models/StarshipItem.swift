@@ -12,3 +12,8 @@ struct StarshipItem: Codable {
     let model: String
     let url: String
 }
+
+extension StarshipItem {
+    static var M1 = StarshipItem(name: "M1", model: "Model M1", url: "http://www.m1.com")
+    static var M2 = StarshipItem(name: "M2", model: "Model M2", url: "http://www.m2.com")
+}

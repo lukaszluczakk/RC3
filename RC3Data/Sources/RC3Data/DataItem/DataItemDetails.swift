@@ -48,3 +48,10 @@ class DataItemDetails: DataItemDetailsProtocol {
         self.className = className
     }
 }
+
+extension DataItemDetails {
+    static var starshipM1 = DataItemDetails(name: "M1", model: "Model M1", manufacturer: "Manufacturer M1", costInCredits: "100", length: "200", maxAtmospheringSpeed: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "700", className: "starship class M1")
+    
+    static var vehicleM1 = DataItemDetails(name: "M1", model: "Model M1", manufacturer: "Manufacturer M1", costInCredits: "100", length: "200", maxAtmospheringSpeed: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "700", className: "vehicle class M1")
+}
+
