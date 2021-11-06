@@ -10,15 +10,20 @@ import Combine
 @testable import RC3Data
 
 final class VehicleApiAdapterTests: XCTestCase {
+    private var apiAdapter: VehicleApiAdapter!
+    
+    override func setUp() {
+        let vehicles: [VehicleItem] = [.M1, .M2]
+        let api = VehicleApiMock(items: vehicles, itemDetails: .M1)
+        apiAdapter = VehicleApiAdapter(api: api)
+    }
+    
+    override func tearDown() {
+        apiAdapter = nil
+    }
+    
     func testGetAllShouldReturnsVehicles() {
-        let vehicles = [
-            VehicleItem(name: "Name 1", model: "Model 1", url: "http://www.google.pl"),
-            VehicleItem(name: "Name 2", model: "Model 2", url: "http://www.google.com"),
-        ]
-        
-        let api = VehicleApiMock(items: vehicles)
-        let apiAdapter = VehicleApiAdapter(api: api)
-        
+
         let exp = expectation(description: "Wait for data")
         var cancellable = Set<AnyCancellable>()
         
@@ -26,8 +31,8 @@ final class VehicleApiAdapterTests: XCTestCase {
             print(completion)
         } receiveValue: { (returnedData) in
             XCTAssertEqual(2, returnedData.count)
-            XCTAssertEqual(vehicles[0].name, returnedData[0].name)
-            XCTAssertEqual(vehicles[0].model, returnedData[0].model)
+            XCTAssertEqual(VehicleItem.M1.name, returnedData[0].name)
+            XCTAssertEqual(VehicleItem.M1.model, returnedData[0].model)
             XCTAssertEqual(DataItemType.vehicle, returnedData[0].type)
             exp.fulfill()
         }.store(in: &cancellable)
@@ -36,12 +41,6 @@ final class VehicleApiAdapterTests: XCTestCase {
     }
     
     func testVehicleSelectShouldReturnsVehicleDetails() {
-        let vehicle = VehicleItem(name: "Name 1", model: "Model 1", url: "http://www.google.com")
-        let vehicleDetails = VehicleItemDetails(name: "Name 1", model: "Model 1", manufacturer: "Manufacturer 1", costInCredits: "100", length: "200", maxAtmospheringSpeed: "300", crew: "400", passengers: "500", cargoCapacity: "600", consumables: "5 days", vehicleClass: "Vehicle class")
-        
-        let api = VehicleApiMock(items: [vehicle], itemDetails: vehicleDetails)
-        let apiAdapter = VehicleApiAdapter(api: api)
-        
         let exp = expectation(description: "Wait for data")
         var cancellable = Set<AnyCancellable>()
         
@@ -52,7 +51,7 @@ final class VehicleApiAdapterTests: XCTestCase {
                 returnedData[0].select().sink { selectCompletion in
                     print(selectCompletion)
                 } receiveValue: { returnedVehicleDetails in
-                    self.vehicleDetailsShouldBeEqualDataItemDetails(vehicleDetails: vehicleDetails, dataItemDetails: returnedVehicleDetails)
+                    self.vehicleDetailsShouldBeEqualDataItemDetails(vehicleDetails: .M1, dataItemDetails: returnedVehicleDetails)
                     exp.fulfill()
                 }.store(in: &cancellable)
                 

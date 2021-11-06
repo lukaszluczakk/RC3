@@ -12,3 +12,8 @@ struct VehicleItem : Codable{
     let model: String
     let url: String
 }
+
+extension VehicleItem {
+    static var M1 = VehicleItem(name: "M1", model: "Model M1", url: "http://www.m1.com")
+    static var M2 = VehicleItem(name: "M2", model: "Model M2", url: "http://www.m2.com")
+}
