@@ -36,8 +36,10 @@ class DataItemListViewController: UIViewController {
         
         dataApiAdapter.getAll()
             .receive(on: DispatchQueue.main)
-            .sink { status in
-                print(status)
+            .sink { [weak self] completion in
+                self?.handleCompletion(completion) { err in
+                    self?.showError(title: "Item list error", message: err.localizedDescription)
+                }
             } receiveValue: { [weak self] returnedData in
                 self?.dataSource.setDataSource(dataSource: returnedData)
                 self?.tableView.reloadData()
@@ -53,3 +55,4 @@ class DataItemListViewController: UIViewController {
         }
     }
 }
+

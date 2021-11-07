@@ -35,8 +35,10 @@ class DataItemDetailsViewControler: UIViewController {
         
         dataItem.select()
             .receive(on: DispatchQueue.main)
-            .sink { Status in
-                print(Status)
+            .sink { [weak self] completion in
+                self?.handleCompletion(completion) { err in
+                    self?.showError(title: "Item details error", message: err.localizedDescription)
+                }
             } receiveValue: { [weak self] returnedData in
                 self?.dataSource.setDataSource(dataItemDetails: returnedData)
                 self?.tableView.reloadData()
