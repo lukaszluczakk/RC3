@@ -17,9 +17,8 @@ final class StarshipApiAdapterTests: XCTestCase {
 
     func testGetAllShouldReturnsStarships() {
         let exp = expectation(description: "Wait for data")
-        var cancellable = Set<AnyCancellable>()
         
-        apiAdapter.getAll().sink { completion in
+        let cancellable = apiAdapter.getAll().sink { completion in
             print(completion)
         } receiveValue: { (returnedData) in
             XCTAssertEqual(2, returnedData.count)
@@ -27,7 +26,11 @@ final class StarshipApiAdapterTests: XCTestCase {
             XCTAssertEqual(StarshipItem.M1.model, returnedData[0].model)
             XCTAssertEqual(DataItemType.starship, returnedData[0].type)
             exp.fulfill()
-        }.store(in: &cancellable)
+        }
+        
+        addTeardownBlock {
+            cancellable.cancel()
+        }
 
         wait(for: [exp], timeout: 0.1)
     }
@@ -46,8 +49,11 @@ final class StarshipApiAdapterTests: XCTestCase {
                     self.starshipDetailsShouldBeEqualDataItemDetails(starshipDetails: .M1, dataItemDetails: returnedStarshipDetails)
                     exp.fulfill()
                 }.store(in: &cancellable)
-                
             }.store(in: &cancellable)
+        
+        addTeardownBlock {
+            cancellable.forEach({ $0.cancel() })
+        }
 
         wait(for: [exp], timeout: 0.1)
     }

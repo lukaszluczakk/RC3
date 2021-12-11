@@ -14,9 +14,8 @@ final class DataApiAdapterCompositionTests: XCTestCase {
         let apiAdapter = DataApiAdapterComposition(starshipApiAdapter: createStarshipApiAdapter(), vehicleApiAdapter: createVehicleDataApiAdapter())
         
         let exp = expectation(description: "Wait for data")
-        var cancellable = Set<AnyCancellable>()
         
-        apiAdapter.getAll().sink { completion in
+        let cancellable = apiAdapter.getAll().sink { completion in
             print(completion)
         } receiveValue: { (returnedData) in
             XCTAssertEqual(4, returnedData.count)
@@ -24,7 +23,11 @@ final class DataApiAdapterCompositionTests: XCTestCase {
             XCTAssertEqual(2, returnedData.filter({ $0.type == .vehicle }).count)
             
             exp.fulfill()
-        }.store(in: &cancellable)
+        }
+        
+        addTeardownBlock {
+            cancellable.cancel()
+        }
 
         wait(for: [exp], timeout: 0.1)
     }

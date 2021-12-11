@@ -23,11 +23,9 @@ final class VehicleApiAdapterTests: XCTestCase {
     }
     
     func testGetAllShouldReturnsVehicles() {
-
         let exp = expectation(description: "Wait for data")
-        var cancellable = Set<AnyCancellable>()
-        
-        apiAdapter.getAll().sink { completion in
+
+        let cancellable = apiAdapter.getAll().sink { completion in
             print(completion)
         } receiveValue: { (returnedData) in
             XCTAssertEqual(2, returnedData.count)
@@ -35,7 +33,11 @@ final class VehicleApiAdapterTests: XCTestCase {
             XCTAssertEqual(VehicleItem.M1.model, returnedData[0].model)
             XCTAssertEqual(DataItemType.vehicle, returnedData[0].type)
             exp.fulfill()
-        }.store(in: &cancellable)
+        }
+        
+        addTeardownBlock {
+            cancellable.cancel()
+        }
 
         wait(for: [exp], timeout: 0.1)
     }
@@ -54,8 +56,11 @@ final class VehicleApiAdapterTests: XCTestCase {
                     self.vehicleDetailsShouldBeEqualDataItemDetails(vehicleDetails: .M1, dataItemDetails: returnedVehicleDetails)
                     exp.fulfill()
                 }.store(in: &cancellable)
-                
             }.store(in: &cancellable)
+        
+        addTeardownBlock {
+            cancellable.forEach({ $0.cancel() })
+        }
 
         wait(for: [exp], timeout: 0.1)
     }
